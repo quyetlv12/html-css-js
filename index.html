@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1 id="title" class="title"></h1>
 
-    <button onclick="onClickButton()">Click me</button>
+<body class="h-screen ">
+    <div class="max-w-md mx-auto shadow-lg rounded-lg overflow-hidden mt-16  bg-gray-100">
+        <div class="px-4 py-2 flex justify-center">
+            <h1 class="text-gray-800 font-bold text-2xl uppercase">To-Do List</h1>
+        </div>
+        <form class="w-full max-w-sm mx-auto px-4 py-2">
+            <div class="flex items-center py-2 relative">
+                <input
+                    class="appearance-none bg-white border-none w-full text-gray-700 rounded-xl mr-3 py-1 px-2 leading-tight focus:outline-none"
+                    type="text" id="input-task" placeholder="Nhập task ...">
+                <button
+                    onclick="addTask()"
+                    class="flex-shrink-0 absolute border-none right-2  hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    type="button">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6V5a1 1 0 0 1 1-1z" fill="#0D0D0D"/></svg>
+                </button>
+            </div>
+        </form>
+        <ul class="divide-y divide-gray-200 px-4" id="list-task">
+        </ul>
+    </div>
+    <!-- ==================JAVASCRIPT================= -->
     <script src="./assets/js/main.js"></script>
 </body>
+
 </html>

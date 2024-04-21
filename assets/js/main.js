@@ -1,132 +1,24 @@
-const title = document.querySelector('#title')
-title.innerHTML = '12345678'
+const inputTask = document.querySelector('#input-task');
+const addTask = () => {
+    const result = inputTask.value // lấy dữ liệu từ ô input
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; // Lấy giá trị ban đầu từ localStorage
+    const arr = [
+        ...tasks,
+        {
+            name: result,
+            create_at: new Date()
+        }
+    ] // nối mảng dữ liệu
+    localStorage.setItem('tasks', JSON.stringify(arr)) // convert dữ liệu thành kiểu string => đẩy dữ liệu vào localStorage
+} 
 
-
-// ============================== CONST LET VAR
-// var age = 8; // GÁN LẠI GIÁ TRỊ , HOSTING
-
-
-// age = 10;
-
-// console.log(age); // 10
-
-
-// const age = 8 // hằng số không bị thay đổi giá trị 
-
-// // age = 10;
-
-// // console.log(age);
-
-// function getAge(){ // block scope  => nó chỉ gọi trong cùng 1 phạm vi code
-//     const age = 10;
-//     console.log(age);
-// }
-
-// getAge()
-
-
-
-// let age = 8; // gán lại được giá trị
-
-
-// age = 10;
-
-// console.log(age)
-
-// let
-
-
-// các kiểu dữ liệu : number , string ,boolean , array , object
-
-// const animal = [
-//     'dog',
-//     'cat',
-//     'snack',
-//     'chicken',
-// ] // bắt đầu từ phần tử 0
-// // animal.forEach(element => {
-// //     console.log(element)
-// // });
-
-// animal.push('bird');
-
-
-// const student = {
-//     name : 'Quyeest',
-//     age : 24,
-//     address : 'ha noi'
-// }
-
-
-// const animal = [
-//     {
-//         name : 'Quyeest',
-//         age : 24,
-//         address : 'ha noi'
-//     },
-//     {
-//         name : 'Quyeest1',
-//         age : 24,
-//         address : 'ha noi'
-//     }
-// ] 
-//  animal.forEach(element => {
-//      console.log(element.name)
-//  });
-
-// function onClickButton(){
-//     if (title.style.display === 'none') {
-//         title.style.display = 'block'
-//     }else{
-//         title.style.display = 'none'
-//     }
-// }
-
-
-
-// The Spread (...) Operator
-
-// const arr1 = [1,2,3,4]
-// const arr2 = [5,6,7,8]
-
-// const arrMegre = arr1.concat(arr2)
-
-// const arrMegre = [...arr1 , ...arr2]
-
-// console.log(arrMegre);
-
-
-// Destructuring là phân tách dữ liệu 
-
-
-// const student = {
-//     name : 'Quyeest',
-//     age : 24,
-//     address : 'ha noi'
-// } 
-
-// const {name,age,address} = student
-
-// console.log(name);
-
-// const onClickButton = () => {
-//     if (title.style.display === 'none') {
-//         title.style.display = 'block'
-//     }else{
-//         title.style.display = 'none'
-//     }
-// }
-
-
-// so sánh == so sánh giá trị với === so sánh giá trị và kiểu dữ liệu
-
-
-
-const student = 10
-
-const student1 = '10'
-
-
-console.log('==' , student == student1);
-
-console.log('===' , student === student1);
+// LẤY DỮ LIỆU 
+window.onload = function () {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [] /// Lấy giá trị ban đầu từ localStorage
+    const listTasks = document.querySelector('#list-task') // lấy danh sách ul
+    tasks.forEach((item) => { // chạy vào forEach để in giá trị ra màn hình
+        const node = document.createElement('li') // tạo  thẻ li
+        node.textContent = item.name // gán giá trị cho thẻ lu
+        listTasks.appendChild(node) // đẩy thẻ li vào danh sách ul
+    });
+};
